@@ -23,14 +23,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init -reconfigure
-      # 1. Change this step to generate a destroy plan
-      - name: Terraform Plan Destroy
-        run: terraform plan -destroy
-
-      # 2. Change this step to execute the destroy command
-      - name: Terraform Destroy
-        if: github.ref == 'refs/heads/main'
-        run: terraform destroy -auto-approve
 
       - name: Terraform Plan
         run: terraform plan

@@ -1,7 +1,7 @@
 variable "region" {
   type        = string
   description = "AWS Region"
-  default     = "ap-south-1"
+  default     = "ap-south-2"
 }
 
 

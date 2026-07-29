@@ -1,3 +1,10 @@
+terraform {
+  backend "s3" {
+    bucket         = "s3-tf-07-2026-bucket-2" # Your stable bucket to hold the state
+    key            = "global/s3/terraform.tfstate"
+    region         = "ap-south-2"
+  }
+}
 provider "aws" {
   region = var.region
 }

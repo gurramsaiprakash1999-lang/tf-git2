@@ -1,10 +1,12 @@
 terraform {
-  backend "s3" {
-    bucket         = "s3-tf-07-2026-bucket-2" # Your stable bucket to hold the state
-    key            = "global/s3/terraform.tfstate"
-    region         = "ap-south-2"
-  }
+     required_providers {
+       aws = {
+         source  = "hashicorp/aws"
+         version = "~> 5.0"
+       }
+     }
 }
+
 provider "aws" {
   region = var.region
 }
@@ -20,6 +22,7 @@ resource "aws_s3_bucket" "my_buckets" {
 
   # Accessing the specific random_id for the specific bucket using each.key
   bucket = "${each.value}-${random_id.bucket_suffixes[each.key].hex}"
+  force_destroy = true
 
   tags = {
     Name = each.key

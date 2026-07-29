@@ -1,3 +1,11 @@
+provider "aws" {
+     
+    "region" = "ap-south-2"
+}
+
+
+
+
 resource "random_id" "bucket_suffixes" {
   for_each    = var.buckets
   byte_length = 4
